@@ -79,6 +79,22 @@ header {
     min-height: 140vh;
 }
 
+.ussr-history-top h3 {
+    margin-top: 40px;
+}
+
+.ussr-history-top p {
+    text-align: center;
+}
+
+#ex2 {
+    justify-content: center;
+}
+
+#ex2-content {
+    border-bottom: 1px #000 solid;
+}
+
 .history-top {
     display: flex;
     justify-content: space-around;
