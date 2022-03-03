@@ -87,6 +87,12 @@ header {
     text-align: center;
 }
 
+.ussr-history-body {
+    width: 85%;
+    margin: 50px auto 0;
+    border-bottom: 1px #000 solid;
+}
+
 #ex2 {
     justify-content: center;
 }
@@ -171,4 +177,81 @@ header {
 
 .results-body p {
     margin-top: 20px;
+}
+
+/* -------- TEST -------- */
+
+#test {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px 0;
+}
+
+.test-start {
+    width: 20%;
+    margin-top: 30px;
+}
+
+.test {
+    display: none;
+    background-color: #616161;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.open {
+    display: block;
+}
+
+.test-wrapper {
+    height: 80vh;
+    width: 80vw;
+    background-color: #fff;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+}
+
+.test-inner {
+    width: 80%;
+    margin: 50px auto 0;
+}
+
+.exit-btn {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #fff;
+    border: none;
+}
+
+.exit-btn span {
+    display: block;
+    background-color: #000;
+    position: absolute;
+    height: 2px;
+    width: 45px;
+    transition: .5s;
+}
+
+.exit-btn span:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.exit-btn span:nth-child(2) {
+    transform: rotate(-45deg);
+}
+
+.exit-btn:hover span:nth-child(1) {
+    transform: rotate(-135deg);
+}
+
+.exit-btn:hover span:nth-child(2) {
+    transform: rotate(135deg);
 }
