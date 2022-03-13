@@ -195,7 +195,7 @@ header {
 
 .test {
     display: none;
-    background-color: #616161;
+    background-color: rgba(97, 97, 97, 0.9);
     position: fixed;
     top: 0;
     left: 0;
@@ -219,6 +219,49 @@ header {
 .test-inner {
     width: 80%;
     margin: 50px auto 0;
+    overflow: hidden;
+}
+
+.test-heading {
+    position: relative;
+    top: -100px;
+    transition: .5s;
+}
+
+.test-heading-animation {
+    top: 0;
+}
+
+.test-question {
+    position: relative;
+    right: -100%;
+    transition: .5s;
+}
+
+.test-question-animation {
+    right: 0;
+}
+
+.test-answer {
+    position: relative;
+    bottom: -100px;
+    transition: .5s;
+}
+
+.test-answer-animation {
+    bottom: 0;
+}
+
+.question {
+    display: none;
+}
+
+.score {
+    display: none;
+}
+
+.current-question {
+    display: block;
 }
 
 .exit-btn {
