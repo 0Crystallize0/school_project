@@ -100,7 +100,7 @@ const question = {
         document.querySelectorAll('.test-question')
             .forEach(target => target.classList.remove('test-question-animation'));
 
-        document.querySelectorAll('.test-question')
+        document.querySelectorAll('.test-answer')
             .forEach(target => target.classList.remove('test-answer-animation'));
 
         document.querySelectorAll('.form-check-input')
