@@ -1,16 +1,16 @@
 // To top btn
 
-const myBtn = document.getElementById("btn-back-to-top");
+const myBtn = document.querySelector('#btn-back-to-top');
 
 window.onscroll = function () {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        myBtn.style.display = "block";
+        myBtn.style.display = 'block';
     } else {
-        myBtn.style.display = "none";
+        myBtn.style.display = 'none';
     }
 };
 
-myBtn.addEventListener("click", () => {
+myBtn.addEventListener('click', () => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 });
@@ -32,7 +32,7 @@ const question = {
     },
 
     startTest() {
-        this.test.classList.add('open');
+        this.test.style.display = 'block';
 
         this.updateCurrentQuestion();
 
@@ -45,23 +45,51 @@ const question = {
 
     closeTest() {
         if (confirm('Завершить тест?')) {
-            question.test.classList.remove('open');
+            question.test.style.display = 'none';
             question.index = -1;
+            this.answers = [];
             question.currentQuestion.classList.remove('current-question');
             question.questions[0].classList.add('current-question');
             question.resetAnimation();
+
+            if (document.querySelector('.medal')) {
+                document.querySelector('.medal').remove();
+            }
 
             document.querySelectorAll('.test-next')
                 .forEach(target => target.removeEventListener('click', this.nextQuestion));
 
             document.querySelectorAll('.exit-btn')
                 .forEach(target => target.removeEventListener('click', this.closeTest));
+
+            document.querySelector('.test-score').removeEventListener('click', () => {
+                question.finishTest();
+            });
         }
     },
 
     finishTest() {
         this.answers = this.answers.filter(answer => answer !== '0');
-        document.querySelector('.final-score').innerHTML = 'Правильно: ' + this.answers.length + ' / 15';
+
+        this.finaleScore = document.querySelector('.final-score');
+        this.finaleMedal = this.finaleScore.parentNode;
+
+        this.medal = document.createElement('img');
+        this.medal.classList.add('medal');
+        this.medal.alt = 'img';
+
+        this.finaleScore.innerHTML = 'Правильно: ' + this.answers.length + ' / 15';
+
+        if (this.answers.length === 15) {
+            this.medal.src = 'assets/img/1.png';
+            this.finaleMedal.appendChild(this.medal);
+        } else if (this.answers.length >= 8 && this.answers.length < 15) {
+            this.medal.src = 'assets/img/2.png';
+            this.finaleMedal.appendChild(this.medal);
+        } else if (this.answers.length >= 3 && this.answers.length < 8) {
+            this.medal.src = 'assets/img/3.png';
+            this.finaleMedal.appendChild(this.medal);
+        }
     },
 
     nextQuestion() {
